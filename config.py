@@ -1,0 +1,7 @@
+authID = ''
+authToken = ''
+
+MAILGUN_API_KEY = ""
+MAILGUN_API_URL = ""
+MAILGUN_MAIL_TO = ''
+MAILGUN_MAIL_FROM = ''
