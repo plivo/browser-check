@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 	<script type="text/javascript" src="//s3.amazonaws.com/plivosdk/web/plivo.min.js"></script>
-	<script type="text/javascript" src="/static/js/browserCheck.js"></script>
+	<script type="text/javascript" src="/static/js/browsercheck.js"></script>
 	<style>
 		table { table-layout: fixed; }
 		table th, table td { overflow: hidden; }
@@ -106,11 +106,6 @@
 		Plivo.conn.login($('#inp_username').val(), $('#inp_password').val());
 	}
 
-	function test_inbound_call() {
-		Plivo.conn.call('browsercheck150514110205');
-		showActiveCallUI();
-	}
-
 	function test_outbound_call() {
 		Plivo.conn.call('browsercheck150514110205');
 		showActiveCallUI();
@@ -156,8 +151,8 @@
 			$('#audio_out_level_txt').text('');
 		} else {
 			$('#conn_state_txt').text('Connected');
-			statsTimer = setInterval(function () {Plivo.conn.getCallStats();}, 2000)
 		}
+		statsTimer = setInterval(function () {PlivoDebug.getStats();}, 1000)
 	}
 
 	Plivo.onFlashStats = function (micLevel, bytesRecv, bytesSent, outLevel, inLevel, micVol, speakerVol) {
@@ -346,7 +341,6 @@
 					<form class='form-inline'>
 						<legend>Press 'Call' button to test phone call</legend>
 						<div class='alert alert-info' id='call_status' style='display: none'></div>
-						<input type='button' onclick='test_inbound_call()' value='Test Inbound Call' class='btn btn-success'>
 						<input type='button' onclick='test_outbound_call()' value='Test Outbound Call' class='btn btn-success'>
 					</form>
 				</div>
